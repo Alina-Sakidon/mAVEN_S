@@ -3,7 +3,7 @@
 <suite name="SampleSuite">
     <test name="SampleTest">
         <classes>
-            <class name="hw17.DynamicControlSelenideTest" />
+            <class name="homework18.PetOrderApiTests" />
         </classes>
     </test>
 </suite>

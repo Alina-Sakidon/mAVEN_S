@@ -7,9 +7,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseSelenideTest {
     static {
-        // Настройки Selenide
         Configuration.browser = "chrome";
         Configuration.headless = true;
+        Configuration.browserSize = "1920x1080";
     }
 
     public MainPageSelenide openMainPage() {
