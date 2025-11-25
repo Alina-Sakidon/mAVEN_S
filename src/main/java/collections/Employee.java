@@ -84,46 +84,51 @@ public class Employee {
         employees.stream().filter(e -> e.getAge() > 30)
                 .forEach(e -> System.out.println((e.firstName + " " + e.lastName + " " + e.age)));
 
-        Map<String, List<String>> gropedByDepartment = employees.stream()
-                .collect(Collectors.groupingBy(Employee::getDepartment,
-                        Collectors.mapping(e -> e.getFirstName() + " " + e.getLastName(), Collectors.toList())));
-        System.out.println(gropedByDepartment);
-        //  employees.stream().map(e-> e.firstName + " "+ e.lastName, )
-        //Задача 3: Знайти найстаршого працівника в кожному відділі
-
-        Map<String, Optional<Employee>> gropedByDepartment2 = employees.stream()
-                .collect(Collectors.groupingBy(Employee::getDepartment,
-                        Collectors.maxBy(Comparator.comparing(Employee::getAge))));
-        Predicate<Employee> predicate = employee -> employee.getDepartment().equals("QA");
-        System.out.println(employees.stream().filter(predicate).collect(Collectors.toList()));
-
-        Map<String, List<String>> gropedByDepEmpLastNames = employees.stream()
-                .collect(Collectors.groupingBy(Employee::getDepartment,
-                        Collectors.mapping(Employee::getLastName, Collectors.toList())));
-
-        employees.stream().filter(e -> e.getDepartment().equals("Development")).max(Comparator.comparing(Employee::getAge));
-        System.out.println(employees.stream().filter(e -> e.getDepartment().equals("QA")).toList());
-        //Get average age of Development employees?
-        System.out.println(employees.stream().filter(e -> e.getDepartment().equals("Development")).mapToInt(Employee::getAge).average());
-        System.out.println(employees.stream().max(Comparator.comparing(Employee::getAge)));
-        //Group employees by department?
-        Map<String, List<Employee>> gropedByDepartment3 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));
-        System.out.println(gropedByDepartment3);
-        //find the oldest employee in the QA department.
-        System.out.println(employees.stream()
-                .filter(e -> e.getDepartment()
-                        .equals("QA")).max(Comparator.comparing(Employee::getAge))
-                .stream().toList());
-
-        //Task: Get a comma-separated string
-        // of all last names of employees in the Development department, sorted alphabetically.
-
-        System.out.println(employees.stream().filter(e -> e.getDepartment().equals("Development")).map(Employee::getLastName).sorted().toList());
-        //Count how many employees are above the age of 30, grouped by department.
-        Map<String, Long> depCount = employees.stream()
-                .filter(e -> e.getAge() > 30).collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
-        depCount.forEach((d, co) ->
-                System.out.println("Department: " + d + " count: " + co));
+        System.out.println("Grouped by department");
+        Map<String, List<String>> groupedByDep = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.mapping(e->e.firstName + " " + e.lastName, Collectors.toList())));
+        System.out.println(groupedByDep);
+        
+        //        Map<String, List<String>> gropedByDepartment = employees.stream()
+//                .collect(Collectors.groupingBy(Employee::getDepartment,
+//                        Collectors.mapping(e -> e.getFirstName() + " " + e.getLastName(), Collectors.toList())));
+//        System.out.println(gropedByDepartment);
+//        //  employees.stream().map(e-> e.firstName + " "+ e.lastName, )
+//        //Задача 3: Знайти найстаршого працівника в кожному відділі
+//
+//        Map<String, Optional<Employee>> gropedByDepartment2 = employees.stream()
+//                .collect(Collectors.groupingBy(Employee::getDepartment,
+//                        Collectors.maxBy(Comparator.comparing(Employee::getAge))));
+//        Predicate<Employee> predicate = employee -> employee.getDepartment().equals("QA");
+//        System.out.println(employees.stream().filter(predicate).collect(Collectors.toList()));
+//
+//        Map<String, List<String>> gropedByDepEmpLastNames = employees.stream()
+//                .collect(Collectors.groupingBy(Employee::getDepartment,
+//                        Collectors.mapping(Employee::getLastName, Collectors.toList())));
+//
+//        employees.stream().filter(e -> e.getDepartment().equals("Development")).max(Comparator.comparing(Employee::getAge));
+//        System.out.println(employees.stream().filter(e -> e.getDepartment().equals("QA")).toList());
+//        //Get average age of Development employees?
+//        System.out.println(employees.stream().filter(e -> e.getDepartment().equals("Development")).mapToInt(Employee::getAge).average());
+//        System.out.println(employees.stream().max(Comparator.comparing(Employee::getAge)));
+//        //Group employees by department?
+//        Map<String, List<Employee>> gropedByDepartment3 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));
+//        System.out.println(gropedByDepartment3);
+//        //find the oldest employee in the QA department.
+//        System.out.println(employees.stream()
+//                .filter(e -> e.getDepartment()
+//                        .equals("QA")).max(Comparator.comparing(Employee::getAge))
+//                .stream().toList());
+//
+//        //Task: Get a comma-separated string
+//        // of all last names of employees in the Development department, sorted alphabetically.
+//
+//        System.out.println(employees.stream().filter(e -> e.getDepartment().equals("Development")).map(Employee::getLastName).sorted().toList());
+//        //Count how many employees are above the age of 30, grouped by department.
+//        Map<String, Long> depCount = employees.stream()
+//                .filter(e -> e.getAge() > 30).collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
+//        depCount.forEach((d, co) ->
+//                System.out.println("Department: " + d + " count: " + co));
     }
 
 }
