@@ -107,7 +107,8 @@
                 <version>3.5.3</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>resources/asakidon.xml</suiteXmlFile>
+                        <!-- путь относительный к корню проекта -->
+                        <suiteXmlFile>src/test/resources/asakidon.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
