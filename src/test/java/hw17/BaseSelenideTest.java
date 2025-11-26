@@ -8,7 +8,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class BaseSelenideTest {
     static {
         Configuration.browser = "chrome";
-        Configuration.headless = true;
         Configuration.browserSize = "1920x1080";
     }
 
