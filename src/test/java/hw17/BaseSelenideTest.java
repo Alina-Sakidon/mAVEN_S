@@ -28,7 +28,6 @@ public class BaseSelenideTest {
     }
     @Attachment(value = "{name}", type = "image/png")
     public byte[] attachScreenshot(String name) {
-        // Возвращаем скриншот как массив байт для Allure
         return Selenide.screenshot(OutputType.BYTES);
     }
 
