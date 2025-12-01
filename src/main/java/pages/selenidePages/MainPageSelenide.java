@@ -2,6 +2,8 @@ package pages.selenidePages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+import kotlin.jvm.Strictfp;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -20,6 +22,7 @@ public class MainPageSelenide {
         return new UploadPageSelenide();
     }
 
+    @Step("Go to dynamic page")
     public DynamicControlsSelenidePage goToDynamicPage(){
         dynamicControlLink.shouldBe(Condition.visible).click();
         return new DynamicControlsSelenidePage();
