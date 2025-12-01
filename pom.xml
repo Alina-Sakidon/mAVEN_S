@@ -125,7 +125,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
                 <configuration>
+                    <systemPropertyVariables>
+                        <environment>qa</environment>
+                        <browser>chrome</browser>
+                        <allure.results.directory>target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+
+                    <!-- важно: избежать перезаписи argLine -->
                     <argLine>@{argLine} -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.21/aspectjweaver-1.9.21.jar</argLine>
+
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/asakidon.xml</suiteXmlFile>
                     </suiteXmlFiles>
