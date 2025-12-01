@@ -88,6 +88,16 @@
             <artifactId>rest-assured</artifactId>
             <version>5.5.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.21</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.31.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -107,6 +117,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.21/aspectjweaver-1.9.21.jar
+                    </argLine>
                     <suiteXmlFiles>
                         <!-- путь относительный к корню проекта -->
                         <suiteXmlFile>src/test/resources/asakidon.xml</suiteXmlFile>
